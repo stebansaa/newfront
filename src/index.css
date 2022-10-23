@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@font-face {
+    font-family: helvetica;
+    src: url(../src/font/Helvetica.ttf);
+}
+
+:root, [data-theme]{
+    font-family: Helvetica;
+    background-image: url(../src/images/TrustSwap_auto_x2.jpg)!important;
+    /* background-size: cover;
+    background-repeat: no-repeat; */
+}
+
+.b-c{
+    border-bottom: 1px solid #041E4E;
+}
+
+
+.Antelope{
+    font-weight: 700!important;
+    font-size: 39px!important;
+    color: white!important;
+    padding-top: 2rem;
+}
+
+.dropdown{
+    background: #212429;
+}
+
+.t{
+    color: white!important;
+    font-weight: 700!important;
+    font-size: 16px!important;
+    border: none!important;
+    background: #41444F!important;
+    padding-right: 0.75rem!important;
+    padding-left: 0.75rem!important;
+    padding-bottom: 1.75rem!important;
+    padding-top: 0.751rem!important;
+}
+.g{
+    color: #6888D2!important;
+    padding-top: 16px;
+    padding-bottom: 23px;
+    /* min-height: 3rem!important; */
+}
+
+.dd{
+    font-weight: 700!important;
+    font-size: 19px!important;
+    color: white!important;
+}
+
+
+.table :where(thead, tfoot) :where(th, td) {
+    background-color: rgb(25, 52, 112)!important;
+    font-weight: 700!important;
+font-size: 16px!important;
+color: white!important;
+}
+
+/* .table :where(tbody th, tbody td) {
+    background-color: rgb(33, 36, 41)!important;
+}
+
+.table :where(tbody):hover {
+    background-color:red!important;
+} */
+
+
+.cn{
+    color: #7FA8F0;
+    font-weight: 700!important;
+font-size: 7px!important;
+}
+
+.cr{
+    font-weight: 800!important;
+font-size: 16px!important;
+background-image:url(../src/images/bg.png);
+border-radius: 5px;
+}
+
+.cg{
+    font-weight: 800!important;
+    font-size: 16px!important;
+    background-image:url(../src/images/bgg.png);
+    border-radius: 5px;
+}
+
+.bgg{
+    font-weight: 800!important;
+    font-size: 16px!important;
+    color:#7FA8F0!important;
+    background-image:url(../src/images/bgb.png);
+    border-radius: 5px;
+}
+
+
+.footer{
+    background-color: black;
+    padding: 3.4rem;
+    /* margin-top: 2rem; */
+}
+
+@media (max-width : 600px)
+{
+    .Antelope{
+    margin-top: 3rem;
+    }
+
+    .table th:first-child{
+        display: none;
+    }
+
+}
+
+
+.logo-image{
+    width: 50%;
+}
+
+.chnger{
+    background: #41444F!important;
+    padding: 5px!important;
+    border-radius: 4px!important;
+    color: white!important;
+}
+
+.ddm{
+    padding-left: 1rem!important;
+    padding-right: 2.2rem!important;
+    margin-left: -1.4rem!important;
+}
+
+.menu :where(li) > :where(*:not(ul)){
+    padding-left: 0rem!important;
+    padding-right: 0rem!important;
+    padding-top: 6px!important;
+    padding-bottom: 6px!important;
+}
+
+.farmImg{
+    width: 70%!important;
+}
+
+.brd{
+    border-radius: 9px;
+}
+
+tr:hover {
+    background-color: yellow!important;
+  }
+
+.ddm li a{
+    font-weight: 700!important;
+    font-size: 19px!important;
+    color: white!important;
+}  
