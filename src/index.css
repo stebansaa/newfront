@@ -11,6 +11,7 @@
 
 :root, [data-theme]{
     font-family: Helvetica;
+    font-size: 14px;
     background-image: url(../src/images/TrustSwap_auto_x2.jpg)!important;
     /* background-size: cover;
     background-repeat: no-repeat; */
@@ -143,7 +144,7 @@ border-radius: 5px;
 
 
 .logo-image{
-    width: 50%;
+    @apply w-[85px]
 }
 
 .chnger{
@@ -182,4 +183,8 @@ tr:hover {
     font-weight: 700!important;
     font-size: 19px!important;
     color: white!important;
-}  
+}
+
+.label {
+    @apply w-20 px-2 bg-green-100 text-green-800;
+}

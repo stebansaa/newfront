@@ -37,7 +37,7 @@ const TableRow = ({ data, index, dark, handleStared, stared }) => {
     }
 
     return (
-        <tr className={`hover ${data.detail && "cursor-pointer"} hoverss`} onClick={handleRedirect}>
+        <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
             <th >
                 <div className='flex items-center cursor-pointer'>
                     <i className={`${isFound ? "fa-solid" : "fa-regular"} fa-star mr-3`} onClick={() => handleStared(data)}></i>
@@ -58,16 +58,16 @@ const TableRow = ({ data, index, dark, handleStared, stared }) => {
             </td>
             <td>${data?.price}</td>
             <td>
-                <span className={`w-20 px-2 bg-green-100 text-green-800 ${dark && "bg-gray-900 text-green-400"} ${parseFloat(data?.durations[0]) < 0 && "text-red-600"}  p-1 cr`} >{data?.durations[0]}%</span>
+                <span className={`px-2 py-1 rounded font-bold ${!dark ? parseFloat(data?.durations[0]) < 0 ? "text-red-600 bg-red-50" : "bg-green-100 text-green-800" : ""} ${dark ? parseFloat(data?.durations[0]) < 0 ? "text-red-600 bg-[#341d2a]" : "bg-[#243335] text-green-400" : ""}`}  >{data?.durations[0]}%</span>
             </td>
             <td>
-                <span className={`w-20 px-2 bg-green-100 text-green-800 ${dark && "bg-gray-900 text-green-400"} ${parseFloat(data?.durations[1]) < 0 && "text-red-600"}  p-1  cg `} >{data?.durations[1]}%</span>
+                <span className={`px-2 py-1 rounded font-bold ${!dark ? parseFloat(data?.durations[1]) < 0 ? "text-red-600 bg-red-50" : "bg-green-100 text-green-800" : ""} ${dark ? parseFloat(data?.durations[1]) < 0 ? "text-red-600 bg-[#341d2a]" : "bg-[#243335] text-green-400" : ""}`} >{data?.durations[1]}%</span>
             </td>
             <td>
-                <span className={`w-20 px-2 bg-green-100 text-green-800 ${dark && "bg-gray-900 text-green-400"} ${parseFloat(data?.durations[2]) < 0 && "text-red-600"}  p-1 cr`} >{data?.durations[2]}%</span>
+                <span className={`px-2 py-1 rounded font-bold ${!dark ? parseFloat(data?.durations[2]) < 0 ? "text-red-600 bg-red-50" : "bg-green-100 text-green-800" : ""} ${dark ? parseFloat(data?.durations[2]) < 0 ? "text-red-600 bg-[#341d2a]" : "bg-[#243335] text-green-400" : ""}`} >{data?.durations[2]}%</span>
             </td>
             <td>
-                <span className={`w-20 px-2 bg-green-100 text-green-800 ${dark && "bg-gray-900 text-green-400"} bgg p-1`} >${data?.liquidity}</span>
+                <span className={`px-2 py-1 rounded font-bold bg-[#222e46] ${!dark && "bg-blue-100 text-blue-900"}`} >${data?.liquidity}</span>
             </td>
             <td>${data?.marketCap}</td>
             <td>
