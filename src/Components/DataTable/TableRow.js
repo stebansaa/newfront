@@ -3,7 +3,7 @@ import toast, { Toaster, useToasterStore } from 'react-hot-toast';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import metaMask from '../../images/metamask.svg';
 
-const TableRow = ({ data, index, dark, handleStared, stared }) => {
+const TableRow = ({ data, index, dark, handleStared: handleStarred, stared }) => {
     const { toasts } = useToasterStore();
 
     const TOAST_LIMIT = 1
@@ -37,10 +37,11 @@ const TableRow = ({ data, index, dark, handleStared, stared }) => {
     }
 
     return (
-        <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
+        // <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
+        <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={() => null}>
             <th >
                 <div className='flex items-center cursor-pointer'>
-                    <i className={`${isFound ? "fa-solid" : "fa-regular"} fa-star mr-3`} onClick={() => handleStared(data)}></i>
+                    <i className={`${isFound ? "fa-solid" : "fa-regular"} fa-star mr-3`} onClick={() => handleStarred(data)}></i>
                     {index + 1}
                 </div>
             </th>
