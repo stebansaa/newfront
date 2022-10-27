@@ -14,11 +14,27 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
     }
   };
 
+  const TableHead = () => (
+    <thead className="">
+      <tr className="w-full">
+        <th className="text-center">#</th>
+        <th className="sticky left-16">NAME</th>
+        <th>PRICE</th>
+        <th className="text-center">1H</th>
+        <th className="text-center">24H</th>
+        <th className="text-center">7D</th>
+        <th className="text-center">LIQUIDITY</th>
+        <th>MARKET CAP</th>
+        <th>SUPPLY</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+  );
+
   return (
     // px-5
     <div
-      className="md:px-[3rem] px-[0.5rem]"
-      a
+      className="px-20"
       href="https://t.me/jointrustswap"
     >
       <a href="https://pomelo.io/grants/trustswap">
@@ -29,7 +45,7 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
           </span>
         </div>
       </a>
-      <h3 className="text-3xl mb-5 mt-[-7.75rem] pl-[-0.57rem] Antelope">
+      <h3 className="text-5xl font-bold mb-5 mt-[-7.75rem] pl-[-0.57rem] Antelope capitalize">
         Antelope market capitalization
       </h3>
 
@@ -69,20 +85,7 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
       <div className="overflow-x-auto">
         {stared.length > 0 && (
           <table className="table w-full z-0">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th className="sticky left-16">NAME</th>
-                <th>PRICE</th>
-                <th>1H</th>
-                <th>24H</th>
-                <th>7D</th>
-                <th>LIQUIDITY</th>
-                <th>MARKET CAP</th>
-                <th>SUPPLY</th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
+            <TableHead />
             <tbody>
               {orderBy === "Order By Liquidity" &&
                 stared
@@ -155,20 +158,7 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
         )}
 
         <table className="table w-full z-0">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th className="sticky left-16">NAME</th>
-              <th>PRICE</th>
-              <th>1H</th>
-              <th>24H</th>
-              <th>7D</th>
-              <th>LIQUIDITY</th>
-              <th>MARKET CAP</th>
-              <th>SUPPLY</th>
-              <th>&nbsp;</th>
-            </tr>
-          </thead>
+          <TableHead />
           <tbody>
             {orderBy === "Order By Liquidity" &&
               coinData

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import toast, { Toaster, useToasterStore } from "react-hot-toast";
 import CopyToClipboard from "react-copy-to-clipboard";
 import metaMask from "../../images/metamask.svg";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const TableRow = ({ data, index, dark, handleStarred, stared }) => {
   const { toasts } = useToasterStore();
@@ -37,18 +38,12 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
 
   return (
     // <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
-    <tr
-      className={`hover ${
-        data.detail && "cursor-pointer"
-      } hoverss bg-[#212429]`}
-      onClick={() => null}
-    >
-      <th>
-        <div className="flex items-center cursor-pointer">
-          <i
-            className={`${isFound ? "fa-solid" : "fa-regular"} fa-star mr-3`}
-            onClick={() => handleStarred(data)}
-          ></i>
+    <tr className={`${data.detail && "cursor-pointer"}`} onClick={() => null}>
+      <th className="">
+        <div className="flex items-center justify-center cursor-pointer gap-1">
+          <button onClick={() => handleStarred(data)}>
+            {isFound ? <AiFillStar /> : <AiOutlineStar />}
+          </button>
           {index + 1}
         </div>
       </th>
@@ -92,64 +87,28 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
                 </div>
             </td> */}
       <td>${data?.price}</td>
-      <td>
-        <span
-          className={`px-2 py-1 rounded font-bold ${
-            !dark
-              ? parseFloat(data?.durations[0]) < 0
-                ? "text-red-600 bg-red-50"
-                : "bg-green-100 text-green-800"
-              : ""
-          } ${
-            dark
-              ? parseFloat(data?.durations[0]) < 0
-                ? "text-red-600 bg-[#341d2a]"
-                : "bg-[#243335] text-green-400"
-              : ""
-          }`}
-        >
-          {data?.durations[0]}%
-        </span>
-      </td>
-      <td>
-        <span
-          className={`px-2 py-1 rounded font-bold ${
-            !dark
-              ? parseFloat(data?.durations[1]) < 0
-                ? "text-red-600 bg-red-50"
-                : "bg-green-100 text-green-800"
-              : ""
-          } ${
-            dark
-              ? parseFloat(data?.durations[1]) < 0
-                ? "text-red-600 bg-[#341d2a]"
-                : "bg-[#243335] text-green-400"
-              : ""
-          }`}
-        >
-          {data?.durations[1]}%
-        </span>
-      </td>
-      <td>
-        <span
-          className={`px-2 py-1 rounded font-bold ${
-            !dark
-              ? parseFloat(data?.durations[2]) < 0
-                ? "text-red-600 bg-red-50"
-                : "bg-green-100 text-green-800"
-              : ""
-          } ${
-            dark
-              ? parseFloat(data?.durations[2]) < 0
-                ? "text-red-600 bg-[#341d2a]"
-                : "bg-[#243335] text-green-400"
-              : ""
-          }`}
-        >
-          {data?.durations[2]}%
-        </span>
-      </td>
-      <td>
+      {data.durations.map((duration, i) => (
+        <td key={i} className="text-center">
+          <span
+            className={`px-2 py-1 rounded font-bold ${
+              !dark
+                ? parseFloat(duration) < 0
+                  ? "text-red-600 bg-red-50"
+                  : "bg-green-100 text-green-800"
+                : ""
+            } ${
+              dark
+                ? parseFloat(duration) < 0
+                  ? "text-red-600 bg-[#341d2a]"
+                  : "bg-[#243335] text-green-400"
+                : ""
+            }`}
+          >
+            {duration}%
+          </span>
+        </td>
+      ))}
+      <td className="text-center">
         <span
           className={`px-2 py-1 rounded font-bold bg-[#222e46] ${
             !dark && "bg-blue-100 text-blue-900"

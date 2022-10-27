@@ -9,11 +9,10 @@
 
 :root,
 [data-theme] {
-  font-family: Helvetica;
-  font-size: 14px;
+  @apply font-['Helvetica'] text-[14px] tracking-wide;
   background-image: url(../src/images/TrustSwap_auto_x2.jpg) !important;
   /* background-size: cover;
-    background-repeat: no-repeat; */
+  background-repeat: no-repeat; */
 }
 
 .b-c {
@@ -21,8 +20,8 @@
 }
 
 .Antelope {
-  font-weight: 700 !important;
-  font-size: 39px !important;
+  /* font-weight: 700 !important; */
+  /* font-size: 39px !important; */
   color: white !important;
   padding-top: 2rem;
 }
@@ -76,20 +75,16 @@
   color: white !important;
 }
 
-.table :where(thead, tfoot) :where(th, td) {
+/* .table :where(thead, tfoot) :where(th, td) {
   background-color: rgb(25, 52, 112) !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   color: white !important;
-}
-
-/* .table :where(tbody th, tbody td) {
-    background-color: rgb(33, 36, 41)!important;
-}
-
-.table :where(tbody):hover {
-    background-color:red!important;
 } */
+
+.table :where(thead, tfoot) :where(th, td) {
+  @apply bg-[#193470] text-[14px] text-white py-6;
+}
 
 .cn {
   color: #7fa8f0;

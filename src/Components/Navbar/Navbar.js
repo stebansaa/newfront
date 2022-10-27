@@ -9,11 +9,10 @@ import ListIcon from "../../icons/ListIcon";
 const Navbar = ({ dark, setDark, orderBy, setOrderBy }) => {
   return (
     <div className="navbar bg-base-100" data-theme={dark ? "dark" : "light"}>
-      <div className="border-b-[1px] b-c w-full py-2 mx-[22px] flex justify-between flex-col md:flex-row">
+      <div className="border-b-[1px] b-c w-full py-4 px-16 flex justify-between flex-col md:flex-row">
         <div className="">
-          <a href="/" className="btn btn-ghost normal-case text-xl">
-            {/* <img width="150px" src="../../images/logo.svg" alt="brand" /> */}
-            <img className="logo-image" src={Logo} alt="brand" />
+          <a href="/" className="">
+            <img className="w-36" src={Logo} alt="brand" />
           </a>
         </div>
 
