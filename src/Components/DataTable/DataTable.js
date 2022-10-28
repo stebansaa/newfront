@@ -66,7 +66,10 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                   )
                 )
               }
-              className={`${item.name === "NAME" && "sticky left-14"} ${["1H", "24H", "7D", "LIQUIDITY"].includes(item.name) && "text-center"}`}
+              className={`${item.name === "NAME" && "sticky left-14"} ${
+                ["1H", "24H", "7D", "LIQUIDITY"].includes(item.name) &&
+                "text-center"
+              }`}
             >
               {item.name}
               {item.isAsc ? (
@@ -85,16 +88,16 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
   return (
     // px-5
     <div className="px-6 md:px-20" href="https://t.me/jointrustswap">
-      <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-4 py-6">
-        <div className="space-y-4">
+      <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-6 py-6">
+        <div className="flex flex-col items-center lg:items-start gap-4">
           <h3
-            className={`text-4xl lg:text-5xl font-bold leading-[3rem] capitalize text-white ${
+            className={`text-4xl lg:text-5xl font-bold leading-[3rem] capitalize text-white text-center lg:text-left ${
               dark ? "" : ""
             }`}
           >
             Antelope market capitalization
           </h3>
-          <div className="dropdown dropdown-end mb-[2rem] brd">
+          <div className="dropdown dropdown-end brd">
             <ul className="menu menu-horizontal p-0 mx-5">
               <li>
                 <a href="##" className="dropdown dd">
@@ -109,18 +112,18 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                     <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                   </svg>
                 </a>
-                <ul className="p-2 bg-[#212429] z-40 ddm">
+                <ul className="dropdown-list">
                   <li onClick={() => setOrderBy("Order By Liquidity")}>
-                    <a href="##">Order By Liquidity</a>
+                    Order By Liquidity
                   </li>
                   <li onClick={() => setOrderBy("Order By MarketCap")}>
-                    <a href="##">Order By MarketCap</a>
+                    Order By MarketCap
                   </li>
                   <li onClick={() => setOrderBy("Order By Price")}>
-                    <a href="##">Order By Price</a>
+                    Order By Price
                   </li>
                   <li onClick={() => setOrderBy("Order By Supply")}>
-                    <a href="##">Order By Supply</a>
+                    Order By Supply
                   </li>
                 </ul>
               </li>
@@ -137,9 +140,9 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
         </a>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded-xl mb-6">
         {starred.length > 0 && (
-          <table className="table w-full z-0 mb-6">
+          <table className="table w-full z-0 overflow-x-auto">
             <TableHead />
             <tbody>
               {orderBy === "Order By Liquidity" &&
@@ -211,7 +214,8 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
             </tbody>
           </table>
         )}
-
+      </div>
+      <div className="overflow-x-auto rounded-xl">
         <table className="table w-full z-0">
           <TableHead />
           <tbody>

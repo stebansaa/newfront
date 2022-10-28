@@ -21,9 +21,9 @@ const Footer = () => {
     <div className="footer">
       <div className="footerImg">
         <img src={Fimg} alt="" />
-        <h3>
-        Built with the support of the EOS community, the EOS Network Foundation and the Telos Foundation.
-        </h3>
+        <p className='text-gray-500 font-normal'>
+          Built with the support of the EOS community, the EOS Network Foundation and the Telos Foundation.
+        </p>
       </div>
     </div>
     

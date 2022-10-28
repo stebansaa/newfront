@@ -38,16 +38,16 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
 
   return (
     // <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
-    <tr className={`${data.detail && "cursor-pointer"} w-full`} onClick={() => null}>
-      <th className="">
+    <tr className={`${data.detail && "cursor-pointer"} table-row`} onClick={() => null}>
+      <td className="sticky left-0">
         <div className="flex items-center justify-center cursor-pointer gap-1">
           <button onClick={() => handleStarred(data)}>
             {isFound ? <AiFillStar /> : <AiOutlineStar />}
           </button>
           {index + 1}
         </div>
-      </th>
-      <th className="sticky left-14 min-w-[200px]">
+      </td>
+      <td className="sticky left-14 min-w-[200px]">
         <div className="flex items-center gap-1">
           <img
             src={`./images/coins/${data?.coin?.icon}`}
@@ -56,7 +56,7 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
           />
           <div className="ml-5 text-start">
             <h4 className="text-md mb-1">{data?.coin?.name}</h4>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <a
                 href={data?.buy}
                 className="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white px-2 border border-green-500 hover:border-transparent rounded text-[12px]"
@@ -66,14 +66,14 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
               <h5
                 className={`text-[12px] px-2 bg-green-100 text-black-800 ${
                   dark && "bg-gray-900 text-gray-400"
-                } rounded p-1`}
+                } rounded py-0.5`}
               >
                 {data?.coin?.shortName}
               </h5>
             </div>
           </div>
         </div>
-      </th>
+      </td>
       <td>${data?.price}</td>
       {data.durations.map((duration, i) => (
         <td key={i} className="text-center">
@@ -134,7 +134,7 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
           </CopyToClipboard>
           <Toaster />
 
-          <a href="##">
+          <button onClick={handleRedirect}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -150,7 +150,7 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
               ></path>
             </svg>
-          </a>
+          </button>
         </div>
       </td>
     </tr>

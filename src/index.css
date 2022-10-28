@@ -9,8 +9,9 @@
 
 :root, [data-theme] {
   @apply font-['Helvetica'] text-[14px] font-bold tracking-wide;
-  @apply bg-[url(../src/images/TrustSwap_auto_x2.jpg)];
-  background-image: url(../src/images/TrustSwap_auto_x2.jpg) !important;
+  /* @apply !bg-[url(../src/images/TrustSwap_auto_x2.jpg)] bg-contain; */
+  background: radial-gradient(58.53% 48.91% at 50% 12.58%, #193470 14.16%, #020612 100%);
+  /* background-image: url(../src/images/TrustSwap_auto_x2.jpg) !important; */
   
 }
 
@@ -25,22 +26,30 @@
   background: #212429;
 }
 
+.dropdown-list {
+  @apply font-bold text-xl p-4 bg-[#212429] z-40 -left-3 top-10
+}
+
+.dropdown-list li {
+  @apply p-2 hover:bg-zinc-700 rounded-lg transition cursor-pointer text-white;
+}
+
 .navbar-btn {
-  @apply bg-[#41444f] border-none text-white inline-flex uppercase items-center justify-center text-[16px];
+  @apply bg-[#41444f] border-none text-white inline-flex uppercase items-center justify-center md:text-[16px];
   @apply h-auto py-[0.6rem] px-4 gap-2.5 rounded-xl;
-  @apply hover:bg-[#41444f];
+  @apply hover:bg-[#6888D2];
   @apply active:scale-90 transition;
 }
 
 .navbar-btn--icon {
   @apply bg-[#41444f] border-none text-white uppercase items-center justify-center text-[16px];
   @apply p-3 gap-2.5 rounded-xl;
-  @apply hover:bg-[#41444f];
+  @apply hover:bg-[#6888D2];
   @apply active:scale-90 transition;
 }
 
 .navbar-btn--outline {
-  @apply text-white inline-flex border uppercase items-center justify-center text-[16px] font-medium;
+  @apply text-white inline-flex border uppercase items-center justify-center md:text-[16px] font-medium;
   @apply bg-[#1F2E48] text-[#6888D2] border-[#6888D2];
   @apply hover:bg-[#6888D2] hover:text-white hover:border-[#6888D2];
   @apply h-auto py-[0.6rem] px-4 gap-2.5 rounded-xl;
@@ -91,7 +100,15 @@
 }
 
 .table {
-  @apply overflow-clip rounded-xl;
+  @apply overflow-clip rounded-xl border-0 border-collapse;
+}
+
+.table-row {
+  @apply border-black border-b-[1.25px];
+}
+
+.table-row td {
+  @apply after:content-[''] after:absolute after:border-b after:border-black/20 after:w-full after:left-0 after:-bottom-0 after:z-[999];
 }
 
 .cn {
@@ -123,9 +140,10 @@
 }
 
 .footer {
-  background-color: black;
+  @apply bg-black py-10 px-10 md:px-20 mt-10;
+  /* background-color: black;
   padding: 3.4rem;
-  margin-top: 2rem;
+  margin-top: 2rem; */
 }
 
 .logo-image {
