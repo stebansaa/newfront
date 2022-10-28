@@ -7,12 +7,11 @@
   src: url(../src/font/Helvetica.ttf);
 }
 
-:root,
-[data-theme] {
-  @apply font-['Helvetica'] text-[14px] tracking-wide;
+:root, [data-theme] {
+  @apply font-['Helvetica'] text-[14px] font-bold tracking-wide;
+  @apply bg-[url(../src/images/TrustSwap_auto_x2.jpg)];
   background-image: url(../src/images/TrustSwap_auto_x2.jpg) !important;
-  /* background-size: cover;
-  background-repeat: no-repeat; */
+  
 }
 
 .b-c {
@@ -20,10 +19,6 @@
 }
 
 .Antelope {
-  /* font-weight: 700 !important; */
-  /* font-size: 39px !important; */
-  color: white !important;
-  padding-top: 2rem;
 }
 
 .dropdown {
@@ -31,16 +26,25 @@
 }
 
 .navbar-btn {
-  @apply btn btn-sm bg-[#41444f] border-none text-white inline-flex items-center justify-center text-[16px];
-  @apply h-auto py-2 px-4 gap-2.5;
+  @apply bg-[#41444f] border-none text-white inline-flex uppercase items-center justify-center text-[16px];
+  @apply h-auto py-[0.6rem] px-4 gap-2.5 rounded-xl;
   @apply hover:bg-[#41444f];
+  @apply active:scale-90 transition;
+}
+
+.navbar-btn--icon {
+  @apply bg-[#41444f] border-none text-white uppercase items-center justify-center text-[16px];
+  @apply p-3 gap-2.5 rounded-xl;
+  @apply hover:bg-[#41444f];
+  @apply active:scale-90 transition;
 }
 
 .navbar-btn--outline {
-  @apply btn btn-sm btn-outline text-white inline-flex items-center justify-center text-[16px] font-medium;
+  @apply text-white inline-flex border uppercase items-center justify-center text-[16px] font-medium;
   @apply bg-[#1F2E48] text-[#6888D2] border-[#6888D2];
   @apply hover:bg-[#6888D2] hover:text-white hover:border-[#6888D2];
-  @apply h-auto py-2 px-4 gap-2.5;
+  @apply h-auto py-[0.6rem] px-4 gap-2.5 rounded-xl;
+  @apply active:scale-90 transition;
 }
 
 .navbar-btn__icon-farm {
@@ -83,7 +87,11 @@
 } */
 
 .table :where(thead, tfoot) :where(th, td) {
-  @apply bg-[#193470] text-[14px] text-white py-6;
+  @apply bg-[#193470] text-[14px] text-white py-6 cursor-pointer;
+}
+
+.table {
+  @apply overflow-clip rounded-xl;
 }
 
 .cn {
@@ -117,21 +125,11 @@
 .footer {
   background-color: black;
   padding: 3.4rem;
-  /* margin-top: 2rem; */
-}
-
-@media (max-width: 600px) {
-  .Antelope {
-    margin-top: 3rem;
-  }
-
-  .table th:first-child {
-    display: none;
-  }
+  margin-top: 2rem;
 }
 
 .logo-image {
-  @apply w-[100px];
+  /* @apply w-[100px]; */
 }
 
 .chnger {
@@ -169,5 +167,5 @@
 }
 
 .label {
-  @apply w-20 px-2 bg-green-100 text-green-800;
+  @apply px-3 py-2 rounded-lg font-bold;
 }
