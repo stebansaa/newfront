@@ -16,80 +16,89 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
     }
   };
 
+  const initialOrder = "asc";
+
   const initialSort = [
     {
       name: "Name",
-      isAsc: false,
     },
     {
       name: "Price",
-      isAsc: false,
     },
     {
       name: "1H",
-      isAsc: false,
     },
     {
       name: "24H",
-      isAsc: false,
     },
     {
       name: "7D",
-      isAsc: false,
     },
     {
       name: "Liquidity",
-      isAsc: false,
     },
     {
       name: "Market Cap",
-      isAsc: false,
     },
     {
       name: "Supply",
-      isAsc: false,
     },
   ];
 
+  const [selected, setSelected] = useState(orderBy);
+  const [order, setOrder] = useState(initialOrder);
   const [sort, setSort] = useState(initialSort);
 
-  const handleSort = (item) => {
-    setSort(() =>
-      initialSort.map((sortItem, i) =>
-        sortItem.name === item.name ? { ...sortItem, isAsc: true } : sortItem
-      )
-    );
-    setOrderBy(item.name);
+  const handleSort = (itemName) => {
+    if (order === "asc") setOrder("desc");
+    else setOrder("asc");
+    setOrderBy(itemName);
+  };
+
+  const handleSelected = (itemName) => {
+    setSelected(itemName);
+    setOrder("asc");
+    setOrderBy(itemName);
   };
 
   const handleDropdown = (order) => {
-    setOrderBy(order);
     setDropdown(false);
-    setSort(() =>
-      initialSort.map((sortItem, i) =>
-        sortItem.name === order ? { ...sortItem, isAsc: true } : sortItem
-      )
-    );
-    
-  }
+    handleSelected(order);
+  };
 
   const SortedTableHead = () => (
     <thead className="">
       <tr className="w-full">
-        <th className="text-center hidden sm:table-cell sm:sticky sm:left-0">#</th>
+        <th className="text-center hidden sm:table-cell sm:sticky sm:left-0">
+          #
+        </th>
         {sort.map((item, i) => {
           return (
             <th
               key={i}
-              onClick={() => handleSort(item)}
-              className={`${item.name === "Name" && "sticky left-0 sm:left-16"} ${
+              onClick={() =>
+                selected === item.name
+                  ? handleSort(item.name)
+                  : handleSelected(item.name)
+              }
+              className={`${
+                item.name === "Name" && "sticky left-0 sm:left-16"
+              } ${
                 ["1H", "24H", "7D", "Liquidity"].includes(item.name)
                   ? "text-center"
                   : "text-left"
               }`}
             >
               {item.name}
-              {item.isAsc && <HiChevronDown className="inline mx-1 mb-1" />}
+              {selected === item.name ? (
+                order === "asc" ? (
+                  <HiChevronDown className="inline mx-1 mb-1" />
+                ) : (
+                  <HiChevronUp className="inline mx-1 mb-1" />
+                )
+              ) : (
+                <></>
+              )}
             </th>
           );
         })}
@@ -98,141 +107,59 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
     </thead>
   );
 
+  const sortBy = {
+    Name: {
+      asc: (a, b) =>
+        b.coin.name < a.coin.name ? 1 : b.coin.name > a.coin.name ? -1 : 0,
+      desc: (b, a) =>
+        b.coin.name < a.coin.name ? 1 : b.coin.name > a.coin.name ? -1 : 0,
+    },
+    Price: {
+      asc: (a, b) => b.price - a.price,
+      desc: (b, a) => b.price - a.price,
+    },
+    "1H": {
+      asc: (a, b) => b.durations[0] - a.durations[0],
+      desc: (b, a) => b.durations[0] - a.durations[0],
+    },
+    "24H": {
+      asc: (a, b) => b.durations[1] - a.durations[1],
+      desc: (b, a) => b.durations[1] - a.durations[1],
+    },
+    "7D": {
+      asc: (a, b) => b.durations[2] - a.durations[2],
+      desc: (b, a) => b.durations[2] - a.durations[2],
+    },
+    Liquidity: {
+      asc: (a, b) =>
+        b.liquidity.replace(/,/g, "") - a.liquidity.replace(/,/g, ""),
+      desc: (b, a) =>
+        b.liquidity.replace(/,/g, "") - a.liquidity.replace(/,/g, ""),
+    },
+    "Market Cap": {
+      asc: (a, b) =>
+        b.marketCap.replace(/,/g, "") - a.marketCap.replace(/,/g, ""),
+      desc: (b, a) =>
+        b.marketCap.replace(/,/g, "") - a.marketCap.replace(/,/g, ""),
+    },
+    Supply: {
+      asc: (a, b) => b.supply.replace(/,/g, "") - a.supply.replace(/,/g, ""),
+      desc: (b, a) => b.supply.replace(/,/g, "") - a.supply.replace(/,/g, ""),
+    },
+  };
+
   const SortedTableBody = ({ data }) => (
     <tbody>
-      {orderBy === "Name" &&
-        data
-          ?.sort((a, b) =>
-            b.coin.name < a.coin.name ? 1 : b.coin.name > a.coin.name ? -1 : 0
-          )
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
-
-      {orderBy === "1H" &&
-        data
-          ?.sort(
-            (a, b) =>
-              b.durations[0] -
-              a.durations[0]
-          )
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
-
-      {orderBy === "24H" &&
-        data
-          ?.sort(
-            (a, b) =>
-              b.durations[1] -
-              a.durations[1]
-          )
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
-
-      {orderBy === "7D" &&
-        data
-          ?.sort(
-            (a, b) =>
-              b.durations[2] -
-              a.durations[2]
-          )
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
-
-      {orderBy === "Liquidity" &&
-        data
-          ?.sort(
-            (a, b) =>
-              b.liquidity.replace(/,/g, "") - a.liquidity.replace(/,/g, "")
-          )
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
-
-      {orderBy === "Market Cap" &&
-        data
-          ?.sort(
-            (a, b) =>
-              b.marketCap.replace(/,/g, "") - a.marketCap.replace(/,/g, "")
-          )
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
-
-      {orderBy === "Price" &&
-        data
-          ?.sort((a, b) => b.price - a.price)
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
-
-      {orderBy === "Supply" &&
-        data
-          ?.sort(
-            (a, b) => b.supply.replace(/,/g, "") - a.supply.replace(/,/g, "")
-          )
-          ?.map((data, index) => (
-            <TableRow
-              data={data}
-              key={index}
-              index={index}
-              dark={dark}
-              handleStarred={handleStarred}
-              starred={starred}
-            />
-          ))}
+      {data?.sort(sortBy[orderBy][order])?.map((data, index) => (
+        <TableRow
+          data={data}
+          key={index}
+          index={index}
+          dark={dark}
+          handleStarred={handleStarred}
+          starred={starred}
+        />
+      ))}
     </tbody>
   );
 
@@ -271,23 +198,21 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                   <li onClick={() => handleDropdown("Liquidity")}>
                     Order by Liquidity
                   </li>
-                  <li onClick={() => handleDropdown("Name")}>
-                    Order by Name
-                  </li>
-                  <li onClick={() => handleDropdown("1H")}>
-                    Order by 1 Hour
-                  </li>
+                  <li onClick={() => handleDropdown("Name")}>Order by Name</li>
+                  <li onClick={() => handleDropdown("1H")}>Order by 1 Hour</li>
                   <li onClick={() => handleDropdown("24H")}>
                     Order by 24 Hours
                   </li>
-                  <li onClick={() => handleDropdown("7D")}>
-                    Order by 7 Days
-                  </li>
+                  <li onClick={() => handleDropdown("7D")}>Order by 7 Days</li>
                   <li onClick={() => handleDropdown("Market Cap")}>
                     Order by Market Cap
                   </li>
-                  <li onClick={() => handleDropdown("Price")}>Order by Price</li>
-                  <li onClick={() => handleDropdown("Supply")}>Order by Supply</li>
+                  <li onClick={() => handleDropdown("Price")}>
+                    Order by Price
+                  </li>
+                  <li onClick={() => handleDropdown("Supply")}>
+                    Order by Supply
+                  </li>
                 </ul>
               </>
             )}

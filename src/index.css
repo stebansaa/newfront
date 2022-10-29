@@ -102,7 +102,7 @@
 }
 
 .table-row {
-  @apply text-white min-w-[100rem];
+  @apply text-white min-w-[100rem] cursor-pointer;
 }
 
 .table th {

@@ -36,12 +36,17 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
     }
   };
 
+  const handleStarClick = (data, e) => {
+    e.stopPropagation();
+    handleStarred(data);
+  }
+
   return (
     // <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
-    <tr className={`table-row group`} onClick={() => null}>
+    <tr className={`table-row group`} onClick={handleRedirect}>
       <td className="hidden sm:table-cell sm:sticky sm:left-0 group-hover:bg-[#191919] transition">
         <div className="flex items-center justify-center cursor-pointer gap-1">
-          <button onClick={() => handleStarred(data)}>
+          <button onClick={(e) => handleStarClick(data, e)}>
             {isFound ? <AiFillStar /> : <AiOutlineStar />}
           </button>
           {index + 1}
