@@ -9,7 +9,7 @@ import ListIcon from "../../icons/ListIcon";
 const Navbar = ({ dark, setDark, orderBy, setOrderBy }) => {
   return (
     <div className="navbar">
-      <div className={`border-b-[1px] w-full py-4 px-4 gap-6 md:px-16 flex justify-between flex-col md:flex-row border-[#041E4E]`}>
+      <div className={`border-b-[1px] w-full py-4 px-4 gap-6 md:px-20 flex justify-between flex-col md:flex-row border-[#041E4E]`}>
         <div className="flex justify-between w-full items-center">
           <a href="/" className="">
             <img className="w-28" src={Logo} alt="brand" />
