@@ -47,7 +47,7 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
           {index + 1}
         </div>
       </td>
-      <td className="group-hover:bg-[#191919] transition sticky left-14 min-w-[200px]">
+      <td className="group-hover:bg-[#191919] transition sticky left-16 min-w-[200px]">
         <div className="flex items-center gap-1">
           <img
             src={`./images/coins/${data?.coin?.icon}`}

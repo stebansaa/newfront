@@ -82,7 +82,7 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
             <th
               key={i}
               onClick={() => handleSort(item)}
-              className={`${item.name === "Name" && "sticky left-12"} ${
+              className={`${item.name === "Name" && "sticky left-16"} ${
                 ["1H", "24H", "7D", "Liquidity"].includes(item.name)
                   ? "text-center"
                   : "text-left"
