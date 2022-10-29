@@ -76,13 +76,13 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
   const SortedTableHead = () => (
     <thead className="">
       <tr className="w-full">
-        <th className="text-center sticky left-0">#</th>
+        <th className="text-center hidden sm:table-cell sm:sticky sm:left-0">#</th>
         {sort.map((item, i) => {
           return (
             <th
               key={i}
               onClick={() => handleSort(item)}
-              className={`${item.name === "Name" && "sticky left-16"} ${
+              className={`${item.name === "Name" && "sticky left-0 sm:left-16"} ${
                 ["1H", "24H", "7D", "Liquidity"].includes(item.name)
                   ? "text-center"
                   : "text-left"
@@ -294,9 +294,9 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
           </div>
         </div>
         <a href="https://pomelo.io/grants/trustswap">
-          <div className="bg-[#FBF0DF] gap-10 flex items-center justify-center py-[8px] rounded px-6">
+          <div className="bg-[#FBF0DF] justify-between sm:gap-10 flex flex-col sm:flex-row items-center py-6 rounded px-6">
             <img className="w-[150px]" src={pomelo} alt="pomelo" />
-            <span className="text-[#021a50] text-[20px]">
+            <span className="text-[#021a50] text-[20px] text-center">
               Support us on Pomelo season 4!
             </span>
           </div>

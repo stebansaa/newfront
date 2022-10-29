@@ -39,7 +39,7 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
   return (
     // <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
     <tr className={`table-row group`} onClick={() => null}>
-      <td className="sticky left-0 group-hover:bg-[#191919] transition">
+      <td className="hidden sm:table-cell sm:sticky sm:left-0 group-hover:bg-[#191919] transition">
         <div className="flex items-center justify-center cursor-pointer gap-1">
           <button onClick={() => handleStarred(data)}>
             {isFound ? <AiFillStar /> : <AiOutlineStar />}
@@ -47,7 +47,7 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
           {index + 1}
         </div>
       </td>
-      <td className="group-hover:bg-[#191919] transition sticky left-16 min-w-[200px]">
+      <td className="group-hover:bg-[#191919] transition sticky left-0 sm:left-16 min-w-[200px]">
         <div className="flex items-center gap-1">
           <img
             src={`./images/coins/${data?.coin?.icon}`}
