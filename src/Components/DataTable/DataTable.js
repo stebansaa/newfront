@@ -5,6 +5,7 @@ import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
 const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
   const [starred, setStarred] = useState([]);
+  const [dropdown, setDropdown] = useState(false);
   const handleStarred = (data) => {
     const isStarred = starred.find((item) => item.id === data.id);
     if (isStarred) {
@@ -14,69 +15,81 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
       setStarred((previousValue) => [...previousValue, data]);
     }
   };
-  const [sort, setSort] = useState([
+
+  const initialSort = [
     {
-      name: "NAME",
-      isAsc: true,
+      name: "Name",
+      isAsc: false,
     },
     {
-      name: "PRICE",
-      isAsc: true,
+      name: "Price",
+      isAsc: false,
     },
     {
       name: "1H",
-      isAsc: true,
+      isAsc: false,
     },
     {
       name: "24H",
-      isAsc: true,
+      isAsc: false,
     },
     {
       name: "7D",
-      isAsc: true,
+      isAsc: false,
     },
     {
-      name: "LIQUIDITY",
-      isAsc: true,
+      name: "Liquidity",
+      isAsc: false,
     },
     {
-      name: "MARKET CAP",
-      isAsc: true,
+      name: "Market Cap",
+      isAsc: false,
     },
     {
-      name: "SUPPLY",
-      isAsc: true,
+      name: "Supply",
+      isAsc: false,
     },
-  ]);
+  ];
 
-  const TableHead = () => (
+  const [sort, setSort] = useState(initialSort);
+
+  const handleSort = (item) => {
+    setSort(() =>
+      initialSort.map((sortItem, i) =>
+        sortItem.name === item.name ? { ...sortItem, isAsc: true } : sortItem
+      )
+    );
+    setOrderBy(item.name);
+  };
+
+  const handleDropdown = (order) => {
+    setOrderBy(order);
+    setDropdown(false);
+    setSort(() =>
+      initialSort.map((sortItem, i) =>
+        sortItem.name === order ? { ...sortItem, isAsc: true } : sortItem
+      )
+    );
+    
+  }
+
+  const SortedTableHead = () => (
     <thead className="">
       <tr className="w-full">
-        <th className="text-center">#</th>
+        <th className="text-center sticky left-0">#</th>
         {sort.map((item, i) => {
           return (
             <th
               key={i}
-              onClick={() =>
-                setSort((sort) =>
-                  sort.map((sortItem, i) =>
-                    sortItem.name === item.name
-                      ? { ...sortItem, isAsc: !sortItem.isAsc }
-                      : sortItem
-                  )
-                )
-              }
-              className={`${item.name === "NAME" && "sticky left-14"} ${
-                ["1H", "24H", "7D", "LIQUIDITY"].includes(item.name) &&
-                "text-center"
+              onClick={() => handleSort(item)}
+              className={`${item.name === "Name" && "sticky left-12"} ${
+                ["1H", "24H", "7D", "Liquidity"].includes(item.name)
+                  ? "text-center"
+                  : "text-left"
               }`}
             >
               {item.name}
-              {item.isAsc ? (
-                <HiChevronDown className="inline mx-1 mb-1" />
-              ) : (
-                <HiChevronUp className="inline mx-1 mb-1" />
-              )}
+              {item.isAsc && <HiChevronDown className="inline mx-1 mb-1" />}
             </th>
           );
         })}
@@ -85,49 +98,199 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
     </thead>
   );
 
+  const SortedTableBody = ({ data }) => (
+    <tbody>
+      {orderBy === "Name" &&
+        data
+          ?.sort((a, b) =>
+            b.coin.name < a.coin.name ? 1 : b.coin.name > a.coin.name ? -1 : 0
+          )
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+
+      {orderBy === "1H" &&
+        data
+          ?.sort(
+            (a, b) =>
+              b.durations[0] -
+              a.durations[0]
+          )
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+
+      {orderBy === "24H" &&
+        data
+          ?.sort(
+            (a, b) =>
+              b.durations[1] -
+              a.durations[1]
+          )
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+
+      {orderBy === "7D" &&
+        data
+          ?.sort(
+            (a, b) =>
+              b.durations[2] -
+              a.durations[2]
+          )
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+
+      {orderBy === "Liquidity" &&
+        data
+          ?.sort(
+            (a, b) =>
+              b.liquidity.replace(/,/g, "") - a.liquidity.replace(/,/g, "")
+          )
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+
+      {orderBy === "Market Cap" &&
+        data
+          ?.sort(
+            (a, b) =>
+              b.marketCap.replace(/,/g, "") - a.marketCap.replace(/,/g, "")
+          )
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+
+      {orderBy === "Price" &&
+        data
+          ?.sort((a, b) => b.price - a.price)
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+
+      {orderBy === "Supply" &&
+        data
+          ?.sort(
+            (a, b) => b.supply.replace(/,/g, "") - a.supply.replace(/,/g, "")
+          )
+          ?.map((data, index) => (
+            <TableRow
+              data={data}
+              key={index}
+              index={index}
+              dark={dark}
+              handleStarred={handleStarred}
+              starred={starred}
+            />
+          ))}
+    </tbody>
+  );
+
   return (
     // px-5
     <div className="px-6 md:px-20" href="https://t.me/jointrustswap">
       <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-6 py-6">
         <div className="flex flex-col items-center lg:items-start gap-4">
           <h3
-            className={`text-4xl lg:text-5xl font-bold leading-[3rem] capitalize text-white text-center lg:text-left ${
-              dark ? "" : ""
-            }`}
+            className={`text-4xl lg:text-5xl font-bold leading-[3rem] capitalize text-white text-center lg:text-left`}
           >
             Antelope market capitalization
           </h3>
-          <div className="dropdown dropdown-end brd">
-            <ul className="menu menu-horizontal p-0 mx-5">
-              <li>
-                <a href="##" className="dropdown dd">
-                  {orderBy}
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                  </svg>
-                </a>
+          {dropdown && (
+            <div
+              className="dropdown-overlay"
+              onClick={() => setDropdown(false)}
+            ></div>
+          )}
+          <div className="dropdown">
+            <button onClick={() => setDropdown(true)} className="dropdown-btn">
+              Order by {orderBy}
+              <svg
+                className="fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+              </svg>
+            </button>
+            {dropdown && (
+              <>
                 <ul className="dropdown-list">
-                  <li onClick={() => setOrderBy("Order By Liquidity")}>
-                    Order By Liquidity
+                  <li onClick={() => handleDropdown("Liquidity")}>
+                    Order by Liquidity
                   </li>
-                  <li onClick={() => setOrderBy("Order By MarketCap")}>
-                    Order By MarketCap
+                  <li onClick={() => handleDropdown("Name")}>
+                    Order by Name
                   </li>
-                  <li onClick={() => setOrderBy("Order By Price")}>
-                    Order By Price
+                  <li onClick={() => handleDropdown("1H")}>
+                    Order by 1 Hour
                   </li>
-                  <li onClick={() => setOrderBy("Order By Supply")}>
-                    Order By Supply
+                  <li onClick={() => handleDropdown("24H")}>
+                    Order by 24 Hours
                   </li>
+                  <li onClick={() => handleDropdown("7D")}>
+                    Order by 7 Days
+                  </li>
+                  <li onClick={() => handleDropdown("Market Cap")}>
+                    Order by Market Cap
+                  </li>
+                  <li onClick={() => handleDropdown("Price")}>Order by Price</li>
+                  <li onClick={() => handleDropdown("Supply")}>Order by Supply</li>
                 </ul>
-              </li>
-            </ul>
+              </>
+            )}
           </div>
         </div>
         <a href="https://pomelo.io/grants/trustswap">
@@ -143,9 +306,10 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
       <div className="overflow-x-auto rounded-xl mb-6">
         {starred.length > 0 && (
           <table className="table w-full z-0 overflow-x-auto">
-            <TableHead />
-            <tbody>
-              {orderBy === "Order By Liquidity" &&
+            <SortedTableHead />
+            <SortedTableBody data={starred} />
+            {/* <tbody>
+              {orderBy === "Liquidity" &&
                 starred
                   ?.sort(
                     (a, b) =>
@@ -159,11 +323,11 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                       index={index}
                       dark={dark}
                       handleStarred={handleStarred}
-                      stared={starred}
+                      starred={starred}
                     />
                   ))}
 
-              {orderBy === "Order By MarketCap" &&
+              {orderBy === "MarketCap" &&
                 starred
                   ?.sort(
                     (a, b) =>
@@ -177,11 +341,11 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                       index={index}
                       dark={dark}
                       handleStarred={handleStarred}
-                      stared={starred}
+                      starred={starred}
                     />
                   ))}
 
-              {orderBy === "Order By Price" &&
+              {orderBy === "Price" &&
                 starred
                   ?.sort((a, b) => b.price - a.price)
                   ?.map((data, index) => (
@@ -191,11 +355,11 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                       index={index}
                       dark={dark}
                       handleStarred={handleStarred}
-                      stared={starred}
+                      starred={starred}
                     />
                   ))}
 
-              {orderBy === "Order By Supply" &&
+              {orderBy === "Supply" &&
                 starred
                   ?.sort(
                     (a, b) =>
@@ -208,84 +372,17 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                       index={index}
                       dark={dark}
                       handleStarred={handleStarred}
-                      stared={starred}
+                      starred={starred}
                     />
                   ))}
-            </tbody>
+            </tbody> */}
           </table>
         )}
       </div>
       <div className="overflow-x-auto rounded-xl">
         <table className="table w-full z-0">
-          <TableHead />
-          <tbody>
-            {orderBy === "Order By Liquidity" &&
-              coinData
-                ?.sort(
-                  (a, b) =>
-                    b.liquidity.replace(/,/g, "") -
-                    a.liquidity.replace(/,/g, "")
-                )
-                ?.map((data, index) => (
-                  <TableRow
-                    data={data}
-                    key={index}
-                    index={index}
-                    dark={dark}
-                    handleStarred={handleStarred}
-                    stared={starred}
-                  />
-                ))}
-
-            {orderBy === "Order By MarketCap" &&
-              coinData
-                ?.sort(
-                  (a, b) =>
-                    b.marketCap.replace(/,/g, "") -
-                    a.marketCap.replace(/,/g, "")
-                )
-                ?.map((data, index) => (
-                  <TableRow
-                    data={data}
-                    key={index}
-                    index={index}
-                    dark={dark}
-                    handleStarred={handleStarred}
-                    stared={starred}
-                  />
-                ))}
-
-            {orderBy === "Order By Price" &&
-              coinData
-                ?.sort((a, b) => b.price - a.price)
-                ?.map((data, index) => (
-                  <TableRow
-                    data={data}
-                    key={index}
-                    index={index}
-                    dark={dark}
-                    handleStarred={handleStarred}
-                    stared={starred}
-                  />
-                ))}
-
-            {orderBy === "Order By Supply" &&
-              coinData
-                ?.sort(
-                  (a, b) =>
-                    b.supply.replace(/,/g, "") - a.supply.replace(/,/g, "")
-                )
-                ?.map((data, index) => (
-                  <TableRow
-                    data={data}
-                    key={index}
-                    index={index}
-                    dark={dark}
-                    handleStarred={handleStarred}
-                    stared={starred}
-                  />
-                ))}
-          </tbody>
+          <SortedTableHead />
+          <SortedTableBody data={coinData} />
         </table>
       </div>
     </div>

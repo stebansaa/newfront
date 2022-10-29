@@ -6,15 +6,15 @@
             "icon": "btc.png",
             "shortName": "BTC"
         },
-        "price": 19016.52,
+        "price": 19916.52,
         "durations": [
             "-0.21",
             "0.15",
             "-5.76"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "22,900",
+        "marketCap": "414,564,568,975",
+        "supply": "24,176,431",
         "address": "ep_1234",
         "detail": "http://swap.trustswap.finance/",
         "buy": "http://swap.trustswap.finance/"
@@ -26,14 +26,14 @@
             "icon": "eth.png",
             "shortName": "ETH"
         },
-        "price": 19016.52,
+        "price": 110016.52,
         "durations": [
             "-0.23",
             "0.56",
             "-5.32"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
+        "liquidity": "32,900",
+        "marketCap": "424,564,568,975",
         "supply": "122,754,603",
         "address": "ep_1234",
         "detail": "http://swap.trustswap.finance/",
@@ -46,15 +46,15 @@
             "icon": "eos.png",
             "shortName": "EOS"
         },
-        "price": 19016.52,
+        "price": 110116.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.29",
+            "-1.28",
+            "-5.46"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "42,900",
+        "marketCap": "434,564,568,975",
+        "supply": "25,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "http://swap.trustswap.finance/"
@@ -66,15 +66,15 @@
             "icon": "telos.png",
             "shortName": "Tlos"
         },
-        "price": 19016.52,
+        "price": 110216.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.30",
+            "-1.29",
+            "-5.47"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "52,900",
+        "marketCap": "444,564,568,975",
+        "supply": "26,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "https://swap.trustswap.finance/telosmainnet/"
@@ -86,15 +86,15 @@
             "icon": "waxp.png",
             "shortName": "WAXP"
         },
-        "price": 19016.52,
+        "price": 110316.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.31",
+            "-1.30",
+            "-5.48"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "62,900",
+        "marketCap": "454,564,568,975",
+        "supply": "27,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "https://swap.trustswap.finance/telosmainnet/"
@@ -106,15 +106,15 @@
             "icon": "uxcoin.ico",
             "shortName": "UTX"
         },
-        "price": 19016.52,
+        "price": 110416.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.32",
+            "-1.31",
+            "-5.49"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "72,900",
+        "marketCap": "464,564,568,975",
+        "supply": "28,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "https://swap.trustswap.finance/telosmainnet/"
@@ -126,15 +126,15 @@
             "icon": "usdt.png",
             "shortName": "USDT"
         },
-        "price": 19016.52,
+        "price": 19116.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.33",
+            "1.20",
+            "-5.50"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "82,900",
+        "marketCap": "474,564,568,975",
+        "supply": "29,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "https://swap.trustswap.finance/telosmainnet/"
@@ -146,15 +146,15 @@
             "icon": "zappy.jpg",
             "shortName": "ZAP"
         },
-        "price": 19016.52,
+        "price": 19216.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.34",
+            "-1.21",
+            "-5.51"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "92,900",
+        "marketCap": "484,564,568,975",
+        "supply": "30,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "https://swap.trustswap.finance/telosmainnet/"
@@ -166,15 +166,15 @@
             "icon": "charm.png",
             "shortName": "CHARM"
         },
-        "price": 19016.52,
+        "price": 19316.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "0.23",
+            "-1.22",
+            "-5.52"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "102,900",
+        "marketCap": "494,564,568,975",
+        "supply": "31,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "https://swap.trustswap.finance/telosmainnet/"
@@ -186,15 +186,15 @@
             "icon": "defibox.webp",
             "shortName": "BOX"
         },
-        "price": 19016.52,
+        "price": 19416.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.24",
+            "-1.23",
+            "-5.53"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "112,900",
+        "marketCap": "504,564,568,975",
+        "supply": "32,176,431",
         "address": "ep_1234",
         "detail": "https://swap.trustswap.finance/telosmainnet/",
         "buy": "https://swap.trustswap.finance/telosmainnet/"
@@ -206,15 +206,15 @@
             "icon": "trustevm.png",
             "shortName": "EVM"
         },
-        "price": 19016.52,
+        "price": 19516.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.25",
+            "-1.24",
+            "5.42"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "122,900",
+        "marketCap": "374,564,568,975",
+        "supply": "20,176,431",
         "address": "ep_1234",
         "detail": "http://swap.trustswap.finance/",
         "buy": "http://swap.trustswap.finance/"
@@ -226,15 +226,15 @@
             "icon": "swapcoin.svg",
             "shortName": "SWAP"
         },
-        "price": 19016.52,
+        "price": 19616.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.26",
+            "-1.25",
+            "-5.43"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "132,900",
+        "marketCap": "384,564,568,975",
+        "supply": "21,176,431",
         "address": "ep_1234",
         "detail": "http://swap.trustswap.finance/",
         "buy": "http://swap.trustswap.finance/"
@@ -246,35 +246,35 @@
             "icon": "doge.png",
             "shortName": "DOGE"
         },
-        "price": 19016.52,
+        "price": 19716.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.27",
+            "-1.26",
+            "-5.44"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "142,900",
+        "marketCap": "394,564,568,975",
+        "supply": "22,176,431",
         "address": "ep_1234",
         "detail": "http://swap.trustswap.finance/",
         "buy": "http://swap.trustswap.finance/"
     },
     {   
-        "id": 15,
+        "id": 16,
         "coin": {
             "name": "Chintai",
             "icon": "chex.png",
             "shortName": "CHEX"
         },
-        "price": 19016.52,
+        "price": 19816.52,
         "durations": [
-            "-0.22",
-            "-1.19",
-            "-5.41"
+            "-0.28",
+            "-1.27",
+            "-5.45"
         ],
-        "liquidity": "nan",
-        "marketCap": "364,564,568,975",
-        "supply": "19,176,431",
+        "liquidity": "152,900",
+        "marketCap": "404,564,568,975",
+        "supply": "23,176,431",
         "address": "ep_1234",
         "detail": "http://swap.trustswap.finance/",
         "buy": "http://swap.trustswap.finance/"

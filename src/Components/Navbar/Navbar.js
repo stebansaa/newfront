@@ -12,7 +12,7 @@ const Navbar = ({ dark, setDark, orderBy, setOrderBy }) => {
       <div className={`border-b-[1px] w-full py-4 px-4 gap-6 md:px-16 flex justify-between flex-col md:flex-row border-[#041E4E]`}>
         <div className="flex justify-between w-full items-center">
           <a href="/" className="">
-            <img className="w-36" src={Logo} alt="brand" />
+            <img className="w-28" src={Logo} alt="brand" />
           </a>
           <div className="flex gap-1">
             <a

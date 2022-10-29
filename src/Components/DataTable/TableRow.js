@@ -4,7 +4,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import metaMask from "../../images/metamask.svg";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-const TableRow = ({ data, index, dark, handleStarred, stared }) => {
+const TableRow = ({ data, index, dark, handleStarred, starred }) => {
   const { toasts } = useToasterStore();
 
   const TOAST_LIMIT = 1;
@@ -23,13 +23,13 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
       duration: 2000,
       style: {
         boxShadow: "0px 0px 4px rgba(110, 99, 71, 0.1)",
-        color: dark ? "#fff" : "#000",
-        backgroundColor: dark ? "#1f2937" : "#fff",
+        color: "#fff",
+        backgroundColor: "#1f2937"
       },
     });
   };
 
-  const isFound = stared?.find((item) => item.id === data.id);
+  const isFound = starred?.find((item) => item.id === data.id);
   const handleRedirect = () => {
     if (data.detail) {
       window.location = data.detail;
@@ -38,8 +38,8 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
 
   return (
     // <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
-    <tr className={`${data.detail && "cursor-pointer"} table-row`} onClick={() => null}>
-      <td className="sticky left-0">
+    <tr className={`table-row group`} onClick={() => null}>
+      <td className="sticky left-0 group-hover:bg-[#191919] transition">
         <div className="flex items-center justify-center cursor-pointer gap-1">
           <button onClick={() => handleStarred(data)}>
             {isFound ? <AiFillStar /> : <AiOutlineStar />}
@@ -47,7 +47,7 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
           {index + 1}
         </div>
       </td>
-      <td className="sticky left-14 min-w-[200px]">
+      <td className="group-hover:bg-[#191919] transition sticky left-14 min-w-[200px]">
         <div className="flex items-center gap-1">
           <img
             src={`./images/coins/${data?.coin?.icon}`}
@@ -64,9 +64,7 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
                 BUY
               </a>
               <h5
-                className={`text-[12px] px-2 bg-green-100 text-black-800 ${
-                  dark && "bg-gray-900 text-gray-400"
-                } rounded py-0.5`}
+                className={`text-[12px] px-2 bg-gray-900 text-gray-400 rounded py-0.5`}
               >
                 {data?.coin?.shortName}
               </h5>
@@ -74,42 +72,32 @@ const TableRow = ({ data, index, dark, handleStarred, stared }) => {
           </div>
         </div>
       </td>
-      <td>${data?.price}</td>
+      <td className="group-hover:bg-[#191919] transition">${data?.price}</td>
       {data.durations.map((duration, i) => (
-        <td key={i} className="text-center">
+        <td key={i} className="group-hover:bg-[#191919] transition text-center">
           <span
             className={`px-3 py-2 rounded-lg font-bold ${
-              !dark
-                ? parseFloat(duration) < 0
-                  ? "text-red-600 bg-red-50"
-                  : "bg-green-100 text-green-800"
-                : ""
-            } ${
-              dark
-                ? parseFloat(duration) < 0
+              parseFloat(duration) < 0
                   ? "text-red-600 bg-[#341d2a]"
                   : "bg-[#243335] text-green-400"
-                : ""
             }`}
           >
             {duration}%
           </span>
         </td>
       ))}
-      <td className="text-center">
+      <td className="group-hover:bg-[#191919] transition text-center min-w-[10rem]">
         <span
-          className={`px-3 py-2 rounded-lg font-bold text-[#6888d2] bg-[#222e46] ${
-            !dark && "bg-blue-100 text-blue-900"
-          }`}
+          className={`px-3 py-2 rounded-lg font-bold text-[#6888d2] bg-[#222e46]`}
         >
           ${data?.liquidity}
         </span>
       </td>
-      <td>${data?.marketCap}</td>
-      <td>
+      <td className="group-hover:bg-[#191919] transition">${data?.marketCap}</td>
+      <td className="group-hover:bg-[#191919] transition min-w-[14rem]">
         {data?.supply} {data?.coin?.shortName}
       </td>
-      <td>
+      <td className="group-hover:bg-[#191919] transition">
         <div className="flex items-center w-20">
           <a href="##">
             <img width={18} src={metaMask} alt="metamask" />
