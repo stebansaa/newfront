@@ -24,13 +24,15 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
       style: {
         boxShadow: "0px 0px 4px rgba(110, 99, 71, 0.1)",
         color: "#fff",
-        backgroundColor: "#1f2937"
+        backgroundColor: "#1f2937",
       },
     });
   };
 
   const isFound = starred?.find((item) => item.id === data.id);
-  const handleRedirect = () => {
+  const handleRedirect = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (data.detail) {
       window.location = data.detail;
     }
@@ -39,10 +41,10 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
   const handleStarClick = (data, e) => {
     e.stopPropagation();
     handleStarred(data);
-  }
+  };
 
   return (
-    <tr className={`table-row group`} onClick={handleRedirect}>
+    <tr className={`table-row group`} onClick={(e) => handleRedirect(e)}>
       <td className="hidden sm:table-cell sm:sticky sm:left-0 group-hover:bg-[#191919] transition">
         <div className="flex items-center justify-center cursor-pointer gap-1">
           <button onClick={(e) => handleStarClick(data, e)}>
@@ -82,8 +84,8 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
           <span
             className={`px-3 py-2 rounded-lg font-bold ${
               parseFloat(duration) < 0
-                  ? "text-red-600 bg-[#341d2a]"
-                  : "bg-[#243335] text-green-400"
+                ? "text-red-600 bg-[#341d2a]"
+                : "bg-[#243335] text-green-400"
             }`}
           >
             {duration}%
@@ -97,52 +99,59 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
           ${data?.liquidity}
         </span>
       </td>
-      <td className="group-hover:bg-[#191919] transition">${data?.marketCap}</td>
+      <td className="group-hover:bg-[#191919] transition">
+        ${data?.marketCap}
+      </td>
       <td className="group-hover:bg-[#191919] transition min-w-[14rem]">
         {data?.supply} {data?.coin?.shortName}
       </td>
       <td className="group-hover:bg-[#191919] transition">
-        <div className="flex items-center w-20">
-          <a href="##">
-            <img width={18} src={metaMask} alt="metamask" />
-          </a>
-          <CopyToClipboard onCopy={handleCopy} text={data.address}>
-            <svg
-              className="mx-2 cursor-pointer"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              height="20"
-              width="20"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-              ></path>
-            </svg>
-          </CopyToClipboard>
+        <div className="flex items-center w-20 z-[999]">
+          <div onClick={(e) => e.stopPropagation()}>
+            <a href="##">
+              <img width={18} src={metaMask} alt="metamask" />
+            </a>
+          </div>
+          <div onClick={(e) => e.stopPropagation()}>
+            <CopyToClipboard onCopy={handleCopy} text={data.address}>
+              <svg
+                className="mx-2 cursor-pointer"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                height="20"
+                width="20"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                ></path>
+              </svg>
+            </CopyToClipboard>
+          </div>
           <Toaster />
-
-          <button onClick={() => null}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              height="20"
-              width="20"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              ></path>
-            </svg>
-          </button>
+          <div onClick={(e) => e.stopPropagation()}>
+            <a href="##">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                height="20"
+                width="20"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                ></path>
+              </svg>
+            </a>
+          </div>
         </div>
       </td>
     </tr>
