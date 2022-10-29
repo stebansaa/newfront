@@ -61,7 +61,7 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
             alt=""
           />
           <div className="ml-5 text-start">
-            <h4 className="text-md mb-1">{data?.coin?.name}</h4>
+            <h4 className="text-md mb-1 capitalize">{data?.coin?.name}</h4>
             <div className="flex items-center gap-1.5">
               <a
                 href={data?.buy}
