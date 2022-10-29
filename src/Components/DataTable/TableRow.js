@@ -70,7 +70,7 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
                 BUY
               </a>
               <h5
-                className={`text-[12px] px-2 bg-gray-900 text-gray-400 rounded py-0.5`}
+                className={`text-[12px] px-2 bg-gray-900 text-gray-400 rounded uppercase py-0.5`}
               >
                 {data?.coin?.shortName}
               </h5>
@@ -102,7 +102,7 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
       <td className="group-hover:bg-[#191919] transition">
         ${data?.marketCap}
       </td>
-      <td className="group-hover:bg-[#191919] transition min-w-[14rem]">
+      <td className="group-hover:bg-[#191919] transition uppercase min-w-[14rem]">
         {data?.supply} {data?.coin?.shortName}
       </td>
       <td className="group-hover:bg-[#191919] transition">
