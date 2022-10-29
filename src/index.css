@@ -44,7 +44,7 @@
 
 .navbar-btn {
   @apply bg-[#41444f] border-none text-white inline-flex items-center justify-center md:text-[16px];
-  @apply h-auto py-[0.6rem] px-4 gap-2.5 rounded-xl;
+  @apply h-auto py-[0.4rem] px-4 gap-2.5 rounded-xl;
   @apply hover:bg-[#6888D2];
   @apply active:scale-90 transition;
 }
@@ -60,7 +60,7 @@
   @apply text-white inline-flex border items-center justify-center md:text-[16px] font-medium;
   @apply bg-[#1F2E48] text-[#6888D2] border-[#6888D2];
   @apply hover:bg-[#6888D2] hover:text-white hover:border-[#6888D2];
-  @apply h-auto py-[0.6rem] px-4 gap-2.5 rounded-xl;
+  @apply h-auto py-[0.4rem] px-4 gap-2.5 rounded-xl;
   @apply active:scale-90 transition;
 }
 
