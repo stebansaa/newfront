@@ -173,7 +173,7 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
           >
             Antelope market capitalization
           </h3>
-          {dropdown && (
+          {/* {dropdown && (
             <div
               className="dropdown-overlay"
               onClick={() => setDropdown(false)}
@@ -216,7 +216,7 @@ const DataTable = ({ dark, coinData, orderBy, setOrderBy }) => {
                 </ul>
               </>
             )}
-          </div>
+          </div> */}
         </div>
         <a href="https://pomelo.io/grants/trustswap">
           <div className="bg-[#FBF0DF] justify-between sm:gap-10 flex flex-col sm:flex-row items-center py-6 rounded px-6">

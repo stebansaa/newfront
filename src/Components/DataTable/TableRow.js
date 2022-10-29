@@ -42,7 +42,6 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
   }
 
   return (
-    // <tr className={`hover ${data.detail && "cursor-pointer"} hoverss bg-[#212429]`} onClick={handleRedirect}>
     <tr className={`table-row group`} onClick={handleRedirect}>
       <td className="hidden sm:table-cell sm:sticky sm:left-0 group-hover:bg-[#191919] transition">
         <div className="flex items-center justify-center cursor-pointer gap-1">
@@ -127,7 +126,7 @@ const TableRow = ({ data, index, dark, handleStarred, starred }) => {
           </CopyToClipboard>
           <Toaster />
 
-          <button onClick={handleRedirect}>
+          <button onClick={() => null}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
