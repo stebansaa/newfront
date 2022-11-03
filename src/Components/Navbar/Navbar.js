@@ -53,24 +53,28 @@ const Navbar = ({ dark, setDark, orderBy, setOrderBy }) => {
         </div>
 
         <div className="flex sm:flex-row md:pb-0 items-center flex-wrap md:flex-nowrap justify-center md:justify-end gap-3">
-          <a href="##" className="navbar-btn">
+          
+	  <a href="https://farm.trustswap.finance" className="navbar-btn">
             Farm
             <FarmIcon className="navbar-btn__icon" />
           </a>
 
-          <a href="https://bridge.trustswap.finance" className="navbar-btn">
+          <a href="https://www.trustswap.finance" className="navbar-btn">
             Bridge <BridgeIcon className="navbar-btn__icon" />
           </a>
-          <a href="##" className="navbar-btn">
+          
+	  <a href="https://github.com/evm20" className="navbar-btn">
             List <ListIcon className="navbar-btn__icon" />
           </a>
-          <a
-            href="https://swap.trustswap.finance"
+          
+	  <a
+            href="https://telos.trustswap.finance"
             className="navbar-btn--outline"
           >
             Swap
           </a>
-        </div>
+        
+	  </div>
       </div>
     </div>
   );
